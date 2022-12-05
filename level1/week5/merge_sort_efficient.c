@@ -42,7 +42,21 @@ void mergesort(int key[], int how_many) /* a power of  */
     
     for(k = 1; k < how_many; k *= 2){
         for(j = 0; j < how_many -k; j += 2 *k){
-            merge(key + j, key + j + k)
+            merge(key + j, key + j + k, w +j, k);
+        }
+        for(j = 0; j < how_many; j++){
+            key[j] = w[j];
         }
     }
+}
+
+int main(void){
+    const int SIZE = 8;
+    int a[8] = {99,82,74,85,92,67,76,49};
+    print_array(SIZE, a, "My grades\n");
+    printf("\n\n");
+    mergesort(a, SIZE);
+    print_array(SIZE, a, "My sorted grade\n");
+    printf("\n\n");
+    return 0;
 }
