@@ -1,7 +1,6 @@
-/*  Sorting Merge Sort
+/*  Sorting: Merge Sort -size is a power of 2
 O(n log n) efficient
-Christian Rua Nov 29, 2022
-
+Christian Rua Nov 30, 2022
 */
 
 #include <stdio.h>
@@ -18,35 +17,32 @@ void print_array(int how_many, int data[], char *str){
 void merge(int a[], int b[], int c[], int how_many) /* a and b same size */
 {
     int i = 0, j = 0, k = 0;
+
     while(i < how_many && j < how_many){
         if(a[i] < b[j]){
             c[k++] = a[i++];
         } else {
             c[k++] = b[j++];
-        }
+        }       
     }
 
     while(i < how_many){
         c[k++] = a[i++];
-    }
+    } 
 
     while(j < how_many){
         c[k++] = b[j++];
     }
 }
 
-int main(void){
-    const int SIZE = 5;
-    int a[5] = {67,82,83,88,99};
-    int b[5] = {58, 69, 72,81,88};
-    int c[10];
-    print_array(SIZE, a, "My grades\n");
-    printf("\n\n");
-    print_array(SIZE, b, "More grades\n");
-    printf("\n\n");
-    merge(a,b,c, SIZE);
-    print_array(2*SIZE, c, "My sorted grades\n");
-    printf("\n\n");
-    return 0;
+void mergesort(int key[], int how_many) /* a power of  */
+{
+    int j, k;
+    int w[how_many];
+    
+    for(k = 1; k < how_many; k *= 2){
+        for(j = 0; j < how_many -k; j += 2 *k){
+            merge(key + j, key + j + k)
+        }
+    }
 }
-
