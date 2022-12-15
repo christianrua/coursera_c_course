@@ -17,7 +17,7 @@ int main () {
    int c, number, acc, num_counter, sum;
    char str_name[3];
 
-   fp = fopen("/home/chr1st14n_ru4/development/coursera_c_course/level1/week5/weight_northern_elephant_seal.txt","r");
+   fp = fopen("./weight_northern_elephant_seal.txt","r");
    
    num_counter = 0;
    sum = 0;
